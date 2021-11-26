@@ -1,0 +1,79 @@
+<div class="list row">
+    <!-- <div class="col-md-8">
+      <div class="input-group mb-4">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Rechercher par titre"
+          [(ngModel)]="titre"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchBytitre()"
+          >
+            Rechercher
+          </button>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-8">
+      <h4>Liste des annonces immobilières</h4>
+      <!-- <ul class="list-group">
+        <li
+          class="list-group-annonce"
+          *ngFor="let annonce of annonces; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setCurrentAnnonce(annonce, i)"
+        >
+        {{annonce.titre }}
+        </li>
+      </ul> -->
+        <a routerLink="/create" class="btn btn-primary btn-xs" >Ajouter une annonce</a>
+        <br /><br />
+        <div class="table-responsive">
+            <table class="table table-bordred table-striped">
+                <thead>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Modifier</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let annonce of annonces; let i = index" [class.active]="i == currentIndex" (click)="setCurrentAnnonce(annonce, i)">
+                        <td>{{annonce.id}}</td>
+                        <td><img [src]="createImgPath(annonce.image)" alt="picture" style="width:60px; height:60px;"></td>
+                        <td> {{annonce.titre }}</td>
+                        <td>{{annonce.description}}</td>
+                        <td><a class="btn btn-warning btn-sm" routerLink="/annonces/{{ annonce.id }}">
+                        Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div *ngIf="currentAnnonce.titre">
+        <h4>Annonce</h4>
+        <div>
+          <label><strong>Titre:</strong></label>
+          {{ currentAnnonce.titre }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentAnnonce.description }}
+        </div>
+        <a class="badge badge-warning" routerLink="/annonces/{{ currentAnnonce.id }}">
+          Modifier
+        </a>
+      </div>
+  
+      <div *ngIf="!currentAnnonce">
+        <br />
+        <p>Veuillez cliquer sur une annonce</p>
+      </div>
+    </div>
+  </div>

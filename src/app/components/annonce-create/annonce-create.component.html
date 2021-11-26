@@ -1,0 +1,40 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="titre">Titre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titre"
+            required
+            [(ngModel)]="annonce.titre"
+            name="titre"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="annonce.description"
+            name="description"
+          />
+        </div>
+        
+        
+        <div class="row">
+            <div class="offset-md-5 col-md-2">
+              <button type="button" class="btn btn-primary" (click)="createAnnonce()">Ajouter </button>
+            </div>
+        </div>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h3>Annonce cree avec succes!</h3>
+        <button class="btn btn-success" (click)="newAnnonce()">Nouvelle..</button>
+      </div>
+    </div>
+  </div>
